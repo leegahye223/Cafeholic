@@ -1,0 +1,36 @@
+<% include ../partials/header %> 
+
+     <header class="jumbotron">
+         <div class="container">
+             <h1><span class="glyphicon glyphicon-leaf"></span> Welcome To Cafeholic!</h1>
+             <p>Enjoy your lazy Sunday morning in our finely-selected cozy cafes :) </p>
+             <p>
+                <a class="btn btn-primary btn-lg" href="/cafes/new">Add New Cafe</a>
+             </p>
+              <p>
+              <form action="/cafes" method="GET" class="form-inline" id="cafe-search">
+                <div class="form-group">
+                  <input type="text" name="search" placeholder="Cafe search..." class="form-control">
+                </div>
+              </form>
+             </p>
+         </div>
+     </header>
+     
+     <div class="row text-center flex-wrap" id="cafe-grid">
+        <% cafes.forEach(function(cafe){ %>
+            <div class="col-md-3 col-sm-6">
+                <div class="thumbnail">
+                   <img src="<%= cafe.image %>">
+                   <div class="caption">
+                       <h4><%= cafe.name %></h4>
+                   </div>
+                   <p>
+                       <a href="/cafes/<%= cafe._id %>" class="btn btn-primary">More Info</a>
+                   </p>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+
+<% include ../partials/footer %>
